@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.core.audio import SoundLoader
+from kivy.core.window import Window
 
 class SoundApp(App):
     def build(self):
@@ -27,7 +28,7 @@ class SoundApp(App):
         layout.add_widget(button_clap)
 
         # Bind keyboard keys to button actions
-        ...
+        Window.bind(on_key_down=self.on_key_down)
 
         return layout
     
@@ -52,6 +53,15 @@ class SoundApp(App):
         if sound:
             sound.play()
 
+    def on_key_down(self, keyboard, keycode, text, modifiers, key, scancode):
+        if keycode == 'q':
+            self.play_kick(None)
+        elif keycode == 's':
+            self.play_snare(None)
+        elif keycode == 'd':
+            self.play_clap(None)
+        elif keycode == 'p':
+            self.play_hihat(None)
 
 
 if __name__ == '__main__':
