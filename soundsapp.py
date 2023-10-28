@@ -53,7 +53,7 @@ class SoundApp(App):
         if sound:
             sound.play()
 
-    def on_key_down(self, keyboard, keycode, text, modifiers, key, scancode):
+    def on_key_down(self, keyboard, keycode):
         if keycode == 'q':
             self.play_kick(None)
         elif keycode == 's':
